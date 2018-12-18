@@ -11,7 +11,7 @@
 
 
 #include "ngx_http_array_var_util.h"
-#include <ndk.h>
+#include "ndk.h"
 
 
 static ngx_str_t  ngx_http_array_it_key = ngx_string("array_it");
