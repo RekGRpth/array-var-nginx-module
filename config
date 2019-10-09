@@ -19,13 +19,13 @@ ngx_addon_name=ngx_http_array_var_module
 HTTP_ARRAY_VAR_SRCS="                                                       \
                     $ngx_addon_dir/src/ngx_http_array_var_module.c          \
                     $ngx_addon_dir/src/ngx_http_array_var_util.c            \
-                    $ngx_addon_dir/src/ndk.c                                \
+                    $ngx_addon_dir/src/ndk_set_var.c                                \
                     "
 
 HTTP_ARRAY_VAR_DEPS="                                                       \
                     $ngx_addon_dir/src/ddebug.h                             \
                     $ngx_addon_dir/src/ngx_http_array_var_util.h            \
-                    $ngx_addon_dir/src/ndk.h                                \
+                    $ngx_addon_dir/src/ndk_set_var.h                                \
                     "
 
 if test -n "$ngx_module_link"; then
@@ -42,5 +42,3 @@ else
     NGX_ADDON_SRCS="$NGX_ADDON_SRCS $HTTP_ARRAY_VAR_SRCS"
     NGX_ADDON_DEPS="$NGX_ADDON_DEPS $HTTP_ARRAY_VAR_DEPS"
 fi
-
-CFLAGS="$CFLAGS -DNDK_SET_VAR"
