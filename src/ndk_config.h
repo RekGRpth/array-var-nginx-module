@@ -84,11 +84,6 @@
 #define NDK_STRING 1
 #endif
 #endif
-#ifdef  NDK_SET_VAR
-#ifndef NDK_REWRITE
-#define NDK_REWRITE 1
-#endif
-#endif
 #ifdef  NDK_UPSTREAM_LIST
 #ifndef NDK_HTTP_CREATE_MAIN_CONF
 #define NDK_HTTP_CREATE_MAIN_CONF 1
