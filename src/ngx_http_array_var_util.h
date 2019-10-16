@@ -2,7 +2,6 @@
 #define NGX_HTTP_ARRAY_VAR_UTIL_H
 
 
-#include "ndk_set_var.h"
 #include <ngx_core.h>
 #include <ngx_http.h>
 
