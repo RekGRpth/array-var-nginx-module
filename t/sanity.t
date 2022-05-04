@@ -18,6 +18,10 @@ run_tests();
 __DATA__
 
 === TEST 1: array split/join
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -32,6 +36,10 @@ Bob+Marry+John
 
 
 === TEST 2: array split/join (non-empty sep with a limit)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names 2 to=$names;
@@ -46,6 +54,10 @@ Bob+Marry,John
 
 
 === TEST 3: array split/join (non-empty sep with a ZERO limit)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names 0 to=$names;
@@ -60,6 +72,10 @@ Bob+Marry+John
 
 
 === TEST 4: array split/join (emtpy sep with a limit)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split '' $arg_names 2 to=$names;
@@ -74,6 +90,10 @@ B+ob
 
 
 === TEST 5: array split/join (emtpy sep with a ZERO limit)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split '' $arg_names 0 to=$names;
@@ -88,6 +108,10 @@ B+o+b
 
 
 === TEST 6: array split (empty split sep)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split '' $arg_names to=$names;
@@ -102,6 +126,10 @@ B+o+b
 
 
 === TEST 7: array split (empty split/join sep)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split '' $arg_names to=$names;
@@ -116,6 +144,10 @@ GET /foo?names=Bob
 
 
 === TEST 8: array split (empty split + empty input)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split '' $arg_names to=$names;
@@ -130,6 +162,10 @@ GET /foo?
 
 
 === TEST 9: array split/join (single item)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -144,6 +180,10 @@ nomas
 
 
 === TEST 10: array split/join (empty array)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -158,6 +198,10 @@ GET /foo?
 
 
 === TEST 11: array split/join (multi-char sep)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split '->' $arg_names to=$names;
@@ -172,6 +216,10 @@ a(+)b(+)c
 
 
 === TEST 12: array split/join (list of empty values)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -186,6 +234,10 @@ GET /foo?names=,,,
 
 
 === TEST 13: array map
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -201,6 +253,10 @@ GET /foo?names=,,,
 
 
 === TEST 14: array map (in-place)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -216,6 +272,10 @@ GET /foo?names=bob,marry,nomas
 
 
 === TEST 15: array map (copy)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -234,6 +294,10 @@ bob+marry+nomas
 
 
 === TEST 16: array map (empty values)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -249,6 +313,10 @@ GET /foo?names=,marry,nomas
 
 
 === TEST 17: non-in-place join
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -266,6 +334,10 @@ bob-marry-nomas
 
 
 === TEST 18: non-in-place join
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -283,6 +355,11 @@ bob-marry-nomas
 
 
 === TEST 19: map op (in-place)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
+    load_module /etc/nginx/modules/ngx_http_set_misc_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -298,6 +375,11 @@ GET /foo?names=bob,marry,nomas
 
 
 === TEST 20: map op (copy)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
+    load_module /etc/nginx/modules/ngx_http_set_misc_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -313,6 +395,11 @@ GET /foo?names=bob,marry,nomas
 
 
 === TEST 21: map op (quote special chars)
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
+    load_module /etc/nginx/modules/ngx_http_set_misc_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -328,6 +415,10 @@ GET /foo?names=',\
 
 
 === TEST 22: $array_it gets cleared after array map
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -342,6 +433,11 @@ GET /foo?names=bob,marry,nomas
 
 
 === TEST 23: map op (copy) on set_quote_pgsql_str
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
+    load_module /etc/nginx/modules/ngx_http_set_misc_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
@@ -357,6 +453,11 @@ E'bob'+E'marry'+E'nomas'
 
 
 === TEST 24: map op (copy) on set_quote_json_str
+--- main_config
+    load_module /etc/nginx/modules/ndk_http_module.so;
+    load_module /etc/nginx/modules/ngx_http_array_var_module.so;
+    load_module /etc/nginx/modules/ngx_http_echo_module.so;
+    load_module /etc/nginx/modules/ngx_http_set_misc_module.so;
 --- config
     location /foo {
         array_split ',' $arg_names to=$names;
